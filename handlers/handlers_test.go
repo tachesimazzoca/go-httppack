@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"net/http"
+	"net/url"
 	"os"
 	"path"
 	"testing"
@@ -39,7 +40,8 @@ func fromWorkingDir(s string) string {
 
 func TestAssetsHandler(t *testing.T) {
 	rw := &mockResponseWriter{map[string][]string{}, 0, [][]byte{}}
-	req := &http.Request{RequestURI: "/"}
+	u := &url.URL{Path: ""}
+	req := &http.Request{URL: u, RequestURI: "/"}
 	h := NewAssetsHandler(config.New(
 		config.DocumentRoot(fromWorkingDir("/fixtures"))))
 	h.ServeHTTP(rw, req)

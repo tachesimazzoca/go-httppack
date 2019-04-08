@@ -19,7 +19,7 @@ func NewAssetsHandler(cfg config.Config) http.Handler {
 }
 
 func (h *assetsHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	doc := path.Join(h.cfg.DocumentRoot(), directoryIndex(req.RequestURI))
+	doc := path.Join(h.cfg.DocumentRoot(), directoryIndex(req.URL.Path))
 	// check if the file exists
 	_, err := os.Stat(doc)
 	if err != nil {
@@ -57,7 +57,6 @@ func (h *assetsHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 }
 
 func directoryIndex(s string) string {
-	s = strings.TrimSpace(s)
 	if s == "" {
 		return "/index.html"
 	}
