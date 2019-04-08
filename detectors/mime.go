@@ -31,6 +31,7 @@ var BuiltInMimeDetectors = []Detector{
 	&SuffixMimeDetector{"image/jpeg", []string{".jpg", ".jpeg"}},
 	&SuffixMimeDetector{"image/gif", []string{".gif"}},
 	&SuffixMimeDetector{"image/png", []string{".png"}},
+	&SuffixMimeDetector{"image/svg+xml", []string{".svg"}},
 	&SuffixMimeDetector{"application/xml", []string{".xml"}},
 	&SuffixMimeDetector{"application/json", []string{".json"}},
 	&SuffixMimeDetector{"application/x-yaml", []string{".yml", ".yaml"}},
