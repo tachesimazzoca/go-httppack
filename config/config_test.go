@@ -26,11 +26,11 @@ func TestDocumentRoot(t *testing.T) {
 		expected string
 	}
 	patterns := []pattern{
-		pattern{"", "."},
-		pattern{"..", ".."},
-		pattern{"public/", "public"},
-		pattern{"public///", "public"},
-		pattern{"/var/www/", "/var/www"},
+		{"", "."},
+		{"..", ".."},
+		{"public/", "public"},
+		{"public///", "public"},
+		{"/var/www/", "/var/www"},
 	}
 	for _, ptn := range patterns {
 		cfg := New(DocumentRoot(ptn.docRoot))
@@ -45,10 +45,10 @@ func TestEnsureBufferSize(t *testing.T) {
 		expected int
 	}
 	patterns := []pattern{
-		pattern{-1, defaultBufferSize},
-		pattern{0, defaultBufferSize},
-		pattern{1, 1},
-		pattern{2, 2},
+		{-1, defaultBufferSize},
+		{0, defaultBufferSize},
+		{1, 1},
+		{2, 2},
 	}
 	for _, ptn := range patterns {
 		cfg := New(BufferSize(ptn.n))
@@ -64,9 +64,9 @@ func TestEnsureMimeDetectors(t *testing.T) {
 		expected int
 	}
 	patterns := []pattern{
-		pattern{nil, 0},
-		pattern{[]detectors.Detector{}, 0},
-		pattern{[]detectors.Detector{nil}, 1},
+		{nil, 0},
+		{[]detectors.Detector{}, 0},
+		{[]detectors.Detector{nil}, 1},
 	}
 	for _, ptn := range patterns {
 		cfg := New(MimeDetectors(ptn.mds))

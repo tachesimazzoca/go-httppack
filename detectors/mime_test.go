@@ -17,18 +17,18 @@ func TestDetectMimeType(t *testing.T) {
 		expected string
 	}
 	patterns := []pattern{
-		pattern{"", "application/octet-stream"},
-		pattern{"index.html", "text/html"},
-		pattern{"index.htm", "text/html"},
-		pattern{"robot.txt", "text/plain"},
-		pattern{"vue.min.js", "text/javascript"},
-		pattern{"style.css", "text/css"},
-		pattern{"app.json", "application/json"},
-		pattern{"config.xml", "application/xml"},
-		pattern{"config.yml", "application/x-yaml"},
-		pattern{"photo.jpg", "image/jpeg"},
-		pattern{"logo.png", "image/png"},
-		pattern{"spacer.gif", "image/gif"},
+		{"", "application/octet-stream"},
+		{"index.html", "text/html"},
+		{"index.htm", "text/html"},
+		{"robot.txt", "text/plain"},
+		{"vue.min.js", "text/javascript"},
+		{"style.css", "text/css"},
+		{"app.json", "application/json"},
+		{"config.xml", "application/xml"},
+		{"config.yml", "application/x-yaml"},
+		{"photo.jpg", "image/jpeg"},
+		{"logo.png", "image/png"},
+		{"spacer.gif", "image/gif"},
 	}
 	for _, ptn := range patterns {
 		actual := DetectMimeType(ptn.document, BuiltInMimeDetectors)

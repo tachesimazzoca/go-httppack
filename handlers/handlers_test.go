@@ -62,12 +62,14 @@ func TestDirectoryIndex(t *testing.T) {
 		expected string
 	}
 	patterns := []pattern{
-		pattern{"", "/index.html"},
-		pattern{"/", "/index.html"},
-		pattern{"/index.html", "/index.html"},
-		pattern{" ", "/index.html"},
-		pattern{" /foo.html", "/foo.html"},
-		pattern{"/bar.html ", "/bar.html"},
+		{"", "/index.html"},
+		{"/", "/index.html"},
+		{"/foo/", "/foo/index.html"},
+		{"/index.html", "/index.html"},
+		// Illegal URIs should never be normalized.
+		{" ", " "},
+		{" /foo.html", " /foo.html"},
+		{"/bar.html ", "/bar.html "},
 	}
 	for _, ptn := range patterns {
 		if actual := directoryIndex(ptn.uri); actual != ptn.expected {

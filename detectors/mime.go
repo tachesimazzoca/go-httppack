@@ -20,7 +20,7 @@ func (md *SuffixMimeDetector) Detect(s string) (string, error) {
 	if ok {
 		return md.MimeType, nil
 	} else {
-		return "", fmt.Errorf("Not match %s", md)
+		return "", fmt.Errorf("not match %s", md)
 	}
 }
 
